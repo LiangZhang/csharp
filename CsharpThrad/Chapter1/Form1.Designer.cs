@@ -38,6 +38,7 @@
             this.btnNormal = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSync = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +85,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnStop);
             this.groupBox1.Controls.Add(this.btnSync);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -147,6 +149,17 @@
             this.btnSync.UseVisualStyleBackColor = true;
             this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
             // 
+            // btnStop
+            // 
+            this.btnStop.Location = new System.Drawing.Point(15, 229);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(135, 23);
+            this.btnStop.TabIndex = 15;
+            this.btnStop.Text = "6、线程终止";
+            this.btnStop.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -177,6 +190,7 @@
         private System.Windows.Forms.Button btnNormal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSync;
+        private System.Windows.Forms.Button btnStop;
     }
 }
 

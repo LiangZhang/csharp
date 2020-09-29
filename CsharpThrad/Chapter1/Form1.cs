@@ -95,6 +95,30 @@ namespace Chapter1
         }
         #endregion
 
+        #region 线程终止
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            Thread.CurrentThread.Name = "Main Thread";
+            printMsg("主程序开始执行...");
+
+            Thread t1 = new Thread(new ParameterizedThreadStart(this.printParamsNumbers))
+            {
+                Name = "t4",
+                IsBackground = true
+            };
+            t1.Start(10);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            t1.Abort();
+
+            Thread t2 = new Thread(new ParameterizedThreadStart(this.printParamsNumbers))
+            {
+                Name = "t5",
+                IsBackground = true
+            };
+            t2.Start(10);
+        }
+        #endregion
+
         #region 前台、后台线程
 
         #endregion
@@ -164,5 +188,7 @@ namespace Chapter1
             Control.CheckForIllegalCrossThreadCalls = false;
         }
         #endregion
+
+        
     }
 }
