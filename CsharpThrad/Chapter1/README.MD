@@ -8,3 +8,5 @@ fork了一个很不错的项目，但是你又不需要它更新。那么在主�
 作用是关注，目的是等作者更新的时候，你可以收到通知。
 # fork  
 作用是参与，目的是你增加新的内容，然后 Pull Request，把你的修改和主仓库原来的内容合并。
+# sqlLite 安装使用
+[sqllite](https://blog.csdn.net/weixin_41656968/article/details/80338626)
