@@ -33,12 +33,12 @@
             this.btnSingleThread = new System.Windows.Forms.Button();
             this.btnSleepThread = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnPriority = new System.Windows.Forms.Button();
+            this.btnState = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnSync = new System.Windows.Forms.Button();
             this.btnNormal = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSync = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,10 +85,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPriority);
+            this.groupBox1.Controls.Add(this.btnState);
             this.groupBox1.Controls.Add(this.btnStop);
             this.groupBox1.Controls.Add(this.btnSync);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.btnNormal);
             this.groupBox1.Controls.Add(this.btnParamsThread);
             this.groupBox1.Controls.Add(this.btnSingleThread);
@@ -100,23 +100,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "线程的基础操作：";
             // 
-            // label3
+            // btnPriority
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(214, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(449, 12);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "多线程执行（子线程），在执行过程不执行其他操作，比如拖动窗体，解决程序假死";
+            this.btnPriority.Location = new System.Drawing.Point(192, 72);
+            this.btnPriority.Name = "btnPriority";
+            this.btnPriority.Size = new System.Drawing.Size(135, 23);
+            this.btnPriority.TabIndex = 17;
+            this.btnPriority.Text = "8、线程优先级";
+            this.btnPriority.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnPriority.UseVisualStyleBackColor = true;
+            this.btnPriority.Click += new System.EventHandler(this.btnPriority_Click);
             // 
-            // label2
+            // btnState
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(214, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(461, 12);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "单线程执行（主线程），在执行过程不能执行其他操作，比如拖动窗体，造成程序假死";
+            this.btnState.Location = new System.Drawing.Point(192, 29);
+            this.btnState.Name = "btnState";
+            this.btnState.Size = new System.Drawing.Size(135, 23);
+            this.btnState.TabIndex = 16;
+            this.btnState.Text = "7、线程状态";
+            this.btnState.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnState.UseVisualStyleBackColor = true;
+            this.btnState.Click += new System.EventHandler(this.btnState_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Location = new System.Drawing.Point(15, 229);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(135, 23);
+            this.btnStop.TabIndex = 15;
+            this.btnStop.Text = "6、线程终止";
+            this.btnStop.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnSync
+            // 
+            this.btnSync.Location = new System.Drawing.Point(15, 190);
+            this.btnSync.Name = "btnSync";
+            this.btnSync.Size = new System.Drawing.Size(135, 23);
+            this.btnSync.TabIndex = 14;
+            this.btnSync.Text = "5、线程同步";
+            this.btnSync.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnSync.UseVisualStyleBackColor = true;
+            this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
             // 
             // btnNormal
             // 
@@ -138,28 +164,6 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "响应结果：";
             // 
-            // btnSync
-            // 
-            this.btnSync.Location = new System.Drawing.Point(15, 190);
-            this.btnSync.Name = "btnSync";
-            this.btnSync.Size = new System.Drawing.Size(135, 23);
-            this.btnSync.TabIndex = 14;
-            this.btnSync.Text = "5、线程同步";
-            this.btnSync.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnSync.UseVisualStyleBackColor = true;
-            this.btnSync.Click += new System.EventHandler(this.btnSync_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.Location = new System.Drawing.Point(15, 229);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(135, 23);
-            this.btnStop.TabIndex = 15;
-            this.btnStop.Text = "6、线程终止";
-            this.btnStop.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -172,7 +176,6 @@
             this.Text = "线程的基本操作";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,12 +188,12 @@
         private System.Windows.Forms.Button btnSingleThread;
         private System.Windows.Forms.Button btnSleepThread;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnNormal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSync;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnState;
+        private System.Windows.Forms.Button btnPriority;
     }
 }
 

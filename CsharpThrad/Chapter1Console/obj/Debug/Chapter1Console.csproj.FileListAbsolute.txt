@@ -1,0 +1,7 @@
+F:\github\csharp\CsharpThrad\Chapter1Console\obj\Debug\Chapter1Console.csprojAssemblyReference.cache
+F:\github\csharp\CsharpThrad\Chapter1Console\obj\Debug\Chapter1Console.csproj.CoreCompileInputs.cache
+F:\github\csharp\CsharpThrad\Chapter1Console\bin\Debug\Chapter1Console.exe.config
+F:\github\csharp\CsharpThrad\Chapter1Console\bin\Debug\Chapter1Console.exe
+F:\github\csharp\CsharpThrad\Chapter1Console\bin\Debug\Chapter1Console.pdb
+F:\github\csharp\CsharpThrad\Chapter1Console\obj\Debug\Chapter1Console.exe
+F:\github\csharp\CsharpThrad\Chapter1Console\obj\Debug\Chapter1Console.pdb

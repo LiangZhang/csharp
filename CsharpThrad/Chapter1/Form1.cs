@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -95,7 +96,16 @@ namespace Chapter1
         }
         #endregion
 
-        #region 线程终止
+        #region 6.线程终止
+        /// <summary>
+        /// Thread.Abort():
+        ///  a.一般不适用该停止该线程方案
+        ///  b.该方法执行立即终止线程
+        ///  c.该方法不一定能终止线程，目标线程可以通过Thread.ResetAbort()取消线程结束
+        ///  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStop_Click(object sender, EventArgs e)
         {
             Thread.CurrentThread.Name = "Main Thread";
@@ -106,8 +116,9 @@ namespace Chapter1
                 Name = "t4",
                 IsBackground = true
             };
+            
             t1.Start(10);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
+            Thread.Sleep(TimeSpan.FromSeconds(2));
             t1.Abort();
 
             Thread t2 = new Thread(new ParameterizedThreadStart(this.printParamsNumbers))
@@ -116,6 +127,40 @@ namespace Chapter1
                 IsBackground = true
             };
             t2.Start(10);
+        }
+        #endregion
+
+        #region 7.线程优先等级
+        private void btnPriority_Click(object sender, EventArgs e)
+        {
+            printMsg("Current thread priority: " + Thread.CurrentThread.Priority);
+            printMsg("Running on all cores available");
+            RunThreads();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Console.WriteLine("Running on a single core");
+            //让操作系统把所有的线程运行在单个CPU核心上（第一个CPU）
+            Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(1);
+            RunThreads();
+        }
+        private void RunThreads()
+        {
+            //var sample = new ThreadSample();
+            //var threadOne = new Thread(sample.CountNumbers)
+            //{
+            //    Name = "ThreadOne"
+            //};
+            //var threadTwo = new Thread(sample.CountNumbers)
+            //{
+            //    Name = "ThreadTwo"
+            //};
+
+            //threadOne.Priority = ThreadPriority.Highest;
+            //threadTwo.Priority = ThreadPriority.Lowest;
+            //threadOne.Start();
+            //threadTwo.Start();
+
+            //Thread.Sleep(TimeSpan.FromSeconds(2));
+            //sample.Stop();
         }
         #endregion
 
@@ -187,7 +232,21 @@ namespace Chapter1
         {
             Control.CheckForIllegalCrossThreadCalls = false;
         }
+
         #endregion
+
+        private void btnState_Click(object sender, EventArgs e)
+        {
+            Thread.CurrentThread.Name = "Main Thread";
+            printMsg("主程序开始执行...");
+            printMsg("主线程状态：" + Thread.CurrentThread.ThreadState);
+
+            Thread t1 = new Thread(new ParameterizedThreadStart(this.printParamsNumbers))
+            {
+                Name = "t7",
+                IsBackground = true
+            };
+        }
 
         
     }

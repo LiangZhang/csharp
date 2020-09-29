@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultiThread", "MultiThread", "{35124FDC-5032-48A1-94EE-FDBCC262717F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter1", "Chapter1\Chapter1.csproj", "{701FCDA5-E8B0-43AA-B152-893BC3CC0BD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter1Console", "Chapter1Console\Chapter1Console.csproj", "{57F531AC-04CC-4F78-9D7E-997A8038BB8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +19,17 @@ Global
 		{701FCDA5-E8B0-43AA-B152-893BC3CC0BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{701FCDA5-E8B0-43AA-B152-893BC3CC0BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{701FCDA5-E8B0-43AA-B152-893BC3CC0BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57F531AC-04CC-4F78-9D7E-997A8038BB8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57F531AC-04CC-4F78-9D7E-997A8038BB8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57F531AC-04CC-4F78-9D7E-997A8038BB8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57F531AC-04CC-4F78-9D7E-997A8038BB8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{701FCDA5-E8B0-43AA-B152-893BC3CC0BD9} = {35124FDC-5032-48A1-94EE-FDBCC262717F}
+		{57F531AC-04CC-4F78-9D7E-997A8038BB8C} = {35124FDC-5032-48A1-94EE-FDBCC262717F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {27A0AB2C-5B53-4251-8178-2241D31461EC}
