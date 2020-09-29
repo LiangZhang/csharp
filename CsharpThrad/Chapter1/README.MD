@@ -1,12 +1,6 @@
-﻿# git ignore
- 忽略、排除某些文件，地址：https://www.jianshu.com/p/a09a9b40ad20
-# unwatch  
-fork了一个很不错的项目，但是你又不需要它更新。那么在主仓库上点击“UnWatch”按钮,“watch”就会同步更新。
-# star  
-收藏，目的是方便以后查找。
-# watch  
-作用是关注，目的是等作者更新的时候，你可以收到通知。
-# fork  
-作用是参与，目的是你增加新的内容，然后 Pull Request，把你的修改和主仓库原来的内容合并。
-# sqlLite 安装使用
+﻿# sqlLite 安装使用
 [sqllite](https://blog.csdn.net/weixin_41656968/article/details/80338626)
+
+# 启动线程 
+当我们构建一个线程tl的时候，ThreadStart或者ParameterizedThreadStart的实例委托会传给线程的构造函数，我们仅仅只需要指定在线程运行的方法名称(printNumbers),  
+c#编译器会自动创建创建这个对象

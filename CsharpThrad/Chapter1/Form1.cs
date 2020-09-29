@@ -22,7 +22,7 @@ namespace Chapter1
             InitializeComponent();
         }
 
-        #region 正常主线程调用:单线程访问
+        #region 1.正常主线程调用:单线程访问
         /// <summary>
         /// 单线程：程序假死情况，在主线程执行完的情况下，你不能执行其他事情，比如拖动窗体
         /// </summary>
@@ -34,20 +34,23 @@ namespace Chapter1
         }
         #endregion
 
-        #region 多线程调用
+        #region 2.多线程调用:无参数
         /// <summary>
-        /// 单线程访问：
-        /// 异常：System.InvalidOperationException:“线程间操作无效: 从不是创建控件“txtRead”的线程访问它。”
-        /// 原因：txtRead是主线程创建的，printNumbers在另一个线程t1中执行，修改主线程的控件，跨线程操作，异常
-        ///       c#竞争跨线程访问
+        /// 不带参数的线程调用：
+        /// 
+        /// 异常1：System.InvalidOperationException:“线程间操作无效: 从不是创建控件“txtRead”的线程访问它。”
+        /// 原因：txtRead控件是主线程创建的，printNumbers在另一个线程t1中执行，修改主线程的控件，跨线程操作，异常
+        /// 解决方案：c#竞争跨线程访问，让主窗体不检查
+        /// 
+        /// 工作原理：
+        ///  当我们构建一个线程tl的时候，ThreadStart或者ParameterizedThreadStart的实例委托会传给线程的构造函数，
+        ///  我们仅仅只需要指定在线程运行的方法名称(printNumbers),  
+        ///  c#编译器会自动创建创建这个对象
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnSingleThread_Click(object sender, EventArgs e)
         {
-            Thread.CurrentThread.Name = "Main";
-            printNumbers();
-
             Thread thread = new Thread(printNumbers);
             thread.Name = "t1";
             thread.IsBackground = true;
@@ -55,21 +58,89 @@ namespace Chapter1
         }
         #endregion
 
+        #region 3.多线程调用：有参数
+        private void btnParamsThread_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(new ParameterizedThreadStart(this.printParamsNumbers))
+            {
+                Name = "t2",
+                IsBackground = true
+            };
+            thread.Start(10);
+        }
+        #endregion
+
+        #region 4.线程等待、线程同步
+        private void btnSleepThread_Click(object sender, EventArgs e)
+        {
+            Thread thread = new Thread(new ParameterizedThreadStart(this.printParamsSleepNumbers))
+            {
+                Name = "t3",
+                IsBackground = true
+            };
+            thread.Start(10);
+        }
+        private void btnSync_Click(object sender, EventArgs e)
+        {
+            printMsg("主线程开始运行...");
+            Thread t3 = new Thread(new ParameterizedThreadStart(this.printParamsSleepNumbers))
+            {
+                Name = "t3",
+                IsBackground = true
+            };
+            t3.Start(10);
+            printMsg("等待子线程运行结束.");
+            t3.Join();
+            printMsg("子线程运行结束.");
+        }
+        #endregion
+
         #region 前台、后台线程
 
         #endregion
 
-
-
         #region public method
         /// <summary>
-        /// 输出数字
+        /// 无参打印
         /// </summary>
         private void printNumbers()
         {
             printMsg("当前运行线程名称：" + Thread.CurrentThread.Name);
             for (int i = 1; i < 10000; i++)
             {
+                printMsg(i.ToString());
+            }
+            txtRead.AppendText("执行完成...");
+        }
+        /// <summary>
+        /// 带参打印
+        /// </summary>
+        /// <param name="pre"></param>
+        private void printParamsNumbers(object pre)
+        {
+            printMsg("当前运行线程名称：" + Thread.CurrentThread.Name);
+            int count = 10;
+            int.TryParse(pre.ToString(), out count);//这里采用了TryParse方法，避免不能转换时出现异常
+
+            for (int i = 1; i < count; i++)
+            {
+                printMsg(i.ToString());
+            }
+            txtRead.AppendText("执行完成...");
+        }
+        /// <summary>
+        /// 每隔2秒打印一次
+        /// </summary>
+        /// <param name="pre"></param>
+        private void printParamsSleepNumbers(object pre)
+        {
+            printMsg("当前运行线程名称：" + Thread.CurrentThread.Name);
+            int count = 10;
+            int.TryParse(pre.ToString(), out count);//这里采用了TryParse方法，避免不能转换时出现异常
+
+            for (int i = 1; i < count; i++)
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(2));
                 printMsg(i.ToString());
             }
             txtRead.AppendText("执行完成...");
@@ -82,6 +153,7 @@ namespace Chapter1
 
         #endregion
 
+        #region 全局设置
         /// <summary>
         /// 不让检查跨线程调用：
         /// </summary>
@@ -91,5 +163,6 @@ namespace Chapter1
         {
             Control.CheckForIllegalCrossThreadCalls = false;
         }
+        #endregion
     }
 }
